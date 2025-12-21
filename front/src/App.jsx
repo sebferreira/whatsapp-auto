@@ -1,6 +1,7 @@
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 import {AuthProvider} from "./context/AuthContext";
 import HomeAuth from "./protectedRoutes/HomeAuth";
+import {Button} from "@mui/material";
 
 function App() {
   return (
@@ -24,7 +25,7 @@ function App() {
                     {/* 
                     <Navbar />
                     <Home /> */}
-                    <p>hola</p>
+                    <Button variant="outlined">Outlined</Button>
                   </main>
                 </>
               }
