@@ -5,7 +5,7 @@ dotenv.config();
 export const enviarMensajeMeta = async (numero, texto) => {
   try {
     const url = `https://graph.facebook.com/v21.0/${process.env.META_PHONE_ID}/messages`;
-    console.log(process.env.VERIFY_TOKEN_PHONE);
+    console.log(numero, texto);
     const config = {
       headers: {
         Authorization: `Bearer ${process.env.VERIFY_TOKEN_PHONE}`,
