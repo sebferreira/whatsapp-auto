@@ -29,13 +29,7 @@ export const enviarMensaje = async (req, res) => {
   try {
     const {chatId: id_chat} = req.params;
     const {mensaje} = req.body;
-    const client = req.whatsapp;
-    const mensajeCreado = await responderYGuardar(
-      client,
-      id_chat,
-      mensaje,
-      "agente"
-    );
+    const mensajeCreado = await responderYGuardar(id_chat, mensaje, "agente");
     res.json(mensajeCreado);
   } catch (error) {
     console.error(error);

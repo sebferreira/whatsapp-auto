@@ -4,7 +4,7 @@ import responderYGuardar from "./EnviarYGuardarMensaje.js";
 import Chat from "../models/chats.model.js";
 import Cliente from "../models/clientes.model.js";
 
-export async function enviarMensajes(message, client, datos, chat) {
+export async function enviarMensajes(message, datos, chat) {
   if (message.fromMe) return;
   const input = message.body.trim();
   const chatId = message.from;
@@ -20,30 +20,29 @@ export async function enviarMensajes(message, client, datos, chat) {
     id_chat: chatId,
     mensaje: message.body,
     to: message.to,
-    fromMe: message.fromMe,
+    fromMe: false,
     etapa: datos[chatId].fase,
   });
-  registrar(message, client, datos);
+  registrar(message, datos);
 
   if (datos[chatId].fase === "finalizado") {
     const usuario = JSON.stringify(datos[chatId].info);
     await chat.update({usuario});
     switch (input) {
       case "1":
-        await responderYGuardar(client, chatId, "ventas", datos[chatId].fase);
+        await responderYGuardar(chatId, "ventas", datos[chatId].fase);
         datos[chatId].fase = "confirmar";
 
         break;
 
       case "2":
-        await responderYGuardar(client, chatId, "compras", datos[chatId].fase);
+        await responderYGuardar(chatId, "compras", datos[chatId].fase);
         datos[chatId].fase = "confirmar";
 
         break;
 
       case "3":
         await responderYGuardar(
-          client,
           chatId,
           "los pagos se realizan con mp",
           datos[chatId].fase
@@ -53,7 +52,6 @@ export async function enviarMensajes(message, client, datos, chat) {
         break;
       default:
         await responderYGuardar(
-          client,
           chatId,
           "Debes elegir una opcion: 1.ventas 2.compra 3.pagos",
           datos[chatId].fase
@@ -65,7 +63,6 @@ export async function enviarMensajes(message, client, datos, chat) {
 
   if (datos[chatId].fase === "confirmar") {
     await responderYGuardar(
-      client,
       chatId,
       ` nombre:${datos[chatId].info.nombre} apellido:${datos[chatId].info.apellido} DNI:${datos[chatId].info.dni} Si lo anterior es correcto escriba "confirmar", de lo contrario escriba "reintentar"`,
       datos[chatId].fase
@@ -76,7 +73,6 @@ export async function enviarMensajes(message, client, datos, chat) {
   if (datos[chatId].fase === "pendiente") {
     if (input === "reintentar") {
       await responderYGuardar(
-        client,
         chatId,
         "Por favor ingresa tu nombre:",
         datos[chatId].fase
@@ -97,7 +93,6 @@ export async function enviarMensajes(message, client, datos, chat) {
       );
 
       await responderYGuardar(
-        client,
         chatId,
         "Gracias por registrarse",
         datos[chatId].fase
