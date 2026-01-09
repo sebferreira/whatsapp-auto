@@ -36,188 +36,240 @@ export default function ChatDrawer({chats}) {
             direction: "ltr",
             marginBottom: "1rem",
           }}>
-          <Typography
-            component="span"
-            variant="h6"
-            sx={{
-              marginTop: "1rem",
-              fontWeight: "bold",
-              marginLeft: "1rem",
-            }}>
-            <Divider textAlign="left">Chats Disponibles</Divider>
-          </Typography>
-          {chats.map((item) => {
-            if (item.id_chat === params.chatId) {
-              return (
-                <ListItem
-                  disablePadding
-                  key={item.id_chat}
-                  sx={{
-                    width: "100%",
-                    /*   padding: "10px 20px", */ marginTop: "1rem",
-                    display: "flex",
-                    justifyContent: "space-between",
-                    alignItems: "center",
-                    borderRadius: "8px",
-                    transition: "background-color 0.3s ease-in-out",
-                    backgroundColor: "#3B82F6",
-                    "&:hover": {
-                      backgroundColor: " #254e8fff ",
-                      color: "white",
-                    },
-                  }}>
-                  <ListItemButton
-                    component={Link}
-                    to={`/chats/${item.id_chat}`}
-                    sx={{
-                      color: "white",
-                      textDecoration: "none",
-                      display: "flex",
-                      justifyContent: "space-between",
-                      alignItems: "center",
-                      /*  padding: "0", */
-                      marginLeft: "10px",
-                      height: "76px",
-                    }}>
-                    <div
-                      style={{
-                        display: "flex",
-                        alignItems: "center",
-                      }}>
-                      <ListItemIcon>
-                        <AccountCircleRoundedIcon
-                          sx={{
-                            color: "#ffffffff",
-                            fontSize: "2.5rem",
-                          }}
-                        />
-                      </ListItemIcon>
-                      <ListItemText
-                        primary={item.id_chat /* .slice(3, -5) */}
-                        sx={{
-                          "& .MuiTypography-root": {
-                            width: " 10rem",
-                            overflow: "hidden",
-                            textOverflow: "ellipsis",
-                            whiteSpace: "nowrap",
-                          },
-                        }}
-                      />
-                    </div>
-                    <ArrowForwardIosIcon sx={{color: "white"}} />
-                  </ListItemButton>
-                </ListItem>
-              );
-            } else {
-              return (
-                <ListItem
-                  disablePadding
-                  key={item.id_chat}
-                  sx={{
-                    width: "100%",
-                    /*  padding: "10px 20px", */
-                    display: "flex",
-                    justifyContent: "space-between",
-                    alignItems: "center",
-                    borderRadius: "8px",
-                    transition: "background-color 0.3s ease-in-out",
-                    "&:hover": {
-                      backgroundColor: "#1d1e1fff",
-                    },
-                    "&:active": {
-                      backgroundColor: "#383b3dff",
-                    },
-                    marginTop: "1rem",
-                  }}>
-                  <ListItemButton
-                    component={Link}
-                    to={`/chats/${item.id_chat}`}
-                    onClick={() => {
-                      const pathAnterior = sessionStorage.getItem("actualPath");
-                      console.log(item);
-                      console.log(pathAnterior);
-                      if (pathAnterior != `/chats/${item.id_chat}`) {
-                        sessionStorage.setItem("previousPath", pathAnterior);
-                        sessionStorage.setItem(
-                          "actualPath",
-                          `/chats/${item.id_chat}`
-                        );
-                      }
-                    }}
-                    sx={{
-                      /*  marginTop: "1rem", */
-                      color: "white",
-                      textDecoration: "none",
+          {chats.mensaje === "No se han encontrado chats" && (
+            <ListItem
+              disablePadding
+              sx={{
+                width: "100%",
+                padding: "10px 20px",
+                marginTop: "1rem",
 
-                      "& .MuiTypography-root": {
-                        width: " 10rem",
-                        overflow: "hidden",
-                        textOverflow: "ellipsis",
-                        whiteSpace: "nowrap",
-                      },
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+                borderRadius: "8px",
+                transition: "background-color 0.3s ease-in-out",
+              }}>
+              <ListItemText
+                primary={
+                  <Box
+                    sx={{
+                      marginTop: "2rem",
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                      width: "90%",
+                      padding: "2rem",
+                      backgroundColor: "rgba(255, 0, 0, 0.1)",
+                      borderRadius: "12px",
+                      fontSize: "16px",
+                      fontWeight: "bold",
+                      textTransform: "none",
+                    }}>
+                    <Typography
+                      component="p"
+                      sx={{
+                        fontWeight: "bold",
+                        color: "red",
+                      }}>
+                      {chats.mensaje}
+                    </Typography>
+                  </Box>
+                }
+              />
+            </ListItem>
+          )}
+          {chats.mensaje !== "No se han encontrado chats" && (
+            <ListItem
+              disablePadding
+              sx={{
+                width: "100%",
+                padding: "10px 20px",
+                marginTop: "1rem",
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+                borderRadius: "8px",
+                transition: "background-color 0.3s ease-in-out",
+              }}>
+              <ListItemText primary="Chats Disponibles" />
+            </ListItem>
+          )}
+
+          {chats.mensaje !== "No se han encontrado chats" &&
+            chats.map((item) => {
+              if (item.id_chat === params.chatId) {
+                return (
+                  <ListItem
+                    disablePadding
+                    key={item.id_chat}
+                    sx={{
+                      width: "100%",
+                      /*   padding: "10px 20px", */ marginTop: "1rem",
                       display: "flex",
                       justifyContent: "space-between",
                       alignItems: "center",
-                      width: "100%",
-                      /*    padding: "0", */
-                      marginLeft: "10px",
+                      borderRadius: "8px",
+                      transition: "background-color 0.3s ease-in-out",
+                      backgroundColor: "#3B82F6",
+                      "&:hover": {
+                        backgroundColor: " #254e8fff ",
+                        color: "white",
+                      },
                     }}>
-                    <div
-                      style={{
+                    <ListItemButton
+                      component={Link}
+                      to={`/chats/${item.id_chat}`}
+                      sx={{
+                        color: "white",
+                        textDecoration: "none",
                         display: "flex",
+                        justifyContent: "space-between",
                         alignItems: "center",
+                        /*  padding: "0", */
+                        marginLeft: "10px",
+                        height: "76px",
                       }}>
-                      <ListItemIcon>
-                        <AccountCircleRoundedIcon
-                          sx={{
-                            color: "#ffffffff",
-                            fontSize: "2.5rem",
-                          }}
-                        />
-                      </ListItemIcon>
-                      <Box
-                        sx={{
+                      <div
+                        style={{
                           display: "flex",
-                          flexDirection: "column",
-                          /*
-                          alignItems: "center", */
+                          alignItems: "center",
                         }}>
-                        <div style={{display: "flex"}}>
-                          <ListItemText
-                            primary={item.id_chat /* .slice(3, -5) */}
+                        <ListItemIcon>
+                          <AccountCircleRoundedIcon
                             sx={{
-                              color: "white",
+                              color: "#ffffffff",
+                              fontSize: "2.5rem",
                             }}
                           />
+                        </ListItemIcon>
+                        <ListItemText
+                          primary={item.id_chat /* .slice(3, -5) */}
+                          sx={{
+                            "& .MuiTypography-root": {
+                              width: " 10rem",
+                              overflow: "hidden",
+                              textOverflow: "ellipsis",
+                              whiteSpace: "nowrap",
+                            },
+                          }}
+                        />
+                      </div>
+                      <ArrowForwardIosIcon sx={{color: "white"}} />
+                    </ListItemButton>
+                  </ListItem>
+                );
+              } else {
+                return (
+                  <ListItem
+                    disablePadding
+                    key={item.id_chat}
+                    sx={{
+                      width: "100%",
+                      /*  padding: "10px 20px", */
+                      display: "flex",
+                      justifyContent: "space-between",
+                      alignItems: "center",
+                      borderRadius: "8px",
+                      transition: "background-color 0.3s ease-in-out",
+                      "&:hover": {
+                        backgroundColor: "#1d1e1fff",
+                      },
+                      "&:active": {
+                        backgroundColor: "#383b3dff",
+                      },
+                      marginTop: "1rem",
+                    }}>
+                    <ListItemButton
+                      component={Link}
+                      to={`/chats/${item.id_chat}`}
+                      onClick={() => {
+                        const pathAnterior =
+                          sessionStorage.getItem("actualPath");
+                        console.log(item);
+                        console.log(pathAnterior);
+                        if (pathAnterior != `/chats/${item.id_chat}`) {
+                          sessionStorage.setItem("previousPath", pathAnterior);
+                          sessionStorage.setItem(
+                            "actualPath",
+                            `/chats/${item.id_chat}`
+                          );
+                        }
+                      }}
+                      sx={{
+                        /*  marginTop: "1rem", */
+                        color: "white",
+                        textDecoration: "none",
+
+                        "& .MuiTypography-root": {
+                          width: " 10rem",
+                          overflow: "hidden",
+                          textOverflow: "ellipsis",
+                          whiteSpace: "nowrap",
+                        },
+                        display: "flex",
+                        justifyContent: "space-between",
+                        alignItems: "center",
+                        width: "100%",
+                        /*    padding: "0", */
+                        marginLeft: "10px",
+                      }}>
+                      <div
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                        }}>
+                        <ListItemIcon>
+                          <AccountCircleRoundedIcon
+                            sx={{
+                              color: "#ffffffff",
+                              fontSize: "2.5rem",
+                            }}
+                          />
+                        </ListItemIcon>
+                        <Box
+                          sx={{
+                            display: "flex",
+                            flexDirection: "column",
+                            /*
+                          alignItems: "center", */
+                          }}>
+                          <div style={{display: "flex"}}>
+                            <ListItemText
+                              primary={item.id_chat /* .slice(3, -5) */}
+                              sx={{
+                                color: "white",
+                              }}
+                            />
+                            <ListItemText
+                              primary={item.usuario_asignado}
+                              style={{
+                                fontSize: "0.8rem",
+                                color: "#8b8b8bff",
+                                marginLeft: "5px",
+                              }}
+                            />
+                          </div>
                           <ListItemText
-                            primary={item.usuario_asignado}
+                            primary={"UltimoMensaje"}
                             style={{
                               fontSize: "0.8rem",
                               color: "#8b8b8bff",
                               marginLeft: "5px",
                             }}
                           />
-                        </div>
-                        <ListItemText
-                          primary={"UltimoMensaje"}
-                          style={{
-                            fontSize: "0.8rem",
-                            color: "#8b8b8bff",
-                            marginLeft: "5px",
-                          }}
-                        />
-                      </Box>
-                    </div>
-                    <ArrowForwardIosIcon
-                      sx={{
-                        color: "#757575",
-                      }}
-                    />
-                  </ListItemButton>
-                </ListItem>
-              );
-            }
-          })}
+                        </Box>
+                      </div>
+                      <ArrowForwardIosIcon
+                        sx={{
+                          color: "#757575",
+                        }}
+                      />
+                    </ListItemButton>
+                  </ListItem>
+                );
+              }
+            })}
         </List>
       </Box>
     </>

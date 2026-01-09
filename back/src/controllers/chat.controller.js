@@ -4,7 +4,7 @@ export const getChats = async (req, res) => {
   try {
     const chats = await Chat.findAll();
     if (chats.length <= 0)
-      return res.status(404).json(["No se han encontrado chats"]);
+      return res.status(404).json({message: "No se han encontrado chats"});
     res.json(chats);
   } catch (error) {
     console.error(error);

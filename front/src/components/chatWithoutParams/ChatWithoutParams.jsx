@@ -22,7 +22,7 @@ export function ChatWithoutParams({chats}) {
             alignItems: "center",
             width: "100%",
           }}>
-          {chats.message && (
+          {chats.mensaje === "No se han encontrado chats" && (
             <Box
               sx={{
                 marginTop: "2rem",
@@ -44,13 +44,13 @@ export function ChatWithoutParams({chats}) {
                   fontWeight: "bold",
                   color: "red",
                 }}>
-                {chats.message}
+                {chats.mensaje}
               </Typography>
             </Box>
           )}
         </Box>
 
-        {!chats.message && (
+        {chats.mensaje !== "No se han encontrado chats" && (
           <>
             <Typography
               component="p"
