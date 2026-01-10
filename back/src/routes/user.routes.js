@@ -11,8 +11,13 @@ import {revisarCookie} from "../middlewares/authorization.middleware.js";
 
 const router = express.Router();
 
-router.post("/register", validateSchema(registerSchema), registerUser);
-router.post("/login", verifyToken, validateSchema(loginSchema), loginUser);
+router.post(
+  "/register",
+  verifyToken,
+  validateSchema(registerSchema),
+  registerUser
+);
+router.post("/login", validateSchema(loginSchema), loginUser);
 router.post("/logout", logoutUser);
 router.get("/verify/", verifyToken);
 
