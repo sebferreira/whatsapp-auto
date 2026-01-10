@@ -16,7 +16,7 @@ export const registerUser = async (req, res, next) => {
       confirmPassword,
       role,
     } = req.body;
-    const {user: userToken} = req.user;
+    const userToken = req.user;
     if (!userToken !== "admin") return res.status(401).json(["Unauthorized"]);
     const userFound = await User.findOne({where: {username}});
     if (userFound) {

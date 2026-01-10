@@ -25,7 +25,7 @@ export const AuthProvider = ({children}) => {
     if (data.length > 0) {
       return setRegisterErrors(data);
     }
-    setIsAuthRegistered(true);
+    /*   setIsAuthRegistered(true); */
     setRegisterErrors([]);
   };
 
