@@ -3,7 +3,8 @@ import Cliente from "../models/clientes.model.js";
 export const getClientes = async (req, res) => {
   try {
     const userToken = req.user;
-    if (!userToken !== "admin") return res.status(401).json(["Unauthorized"]);
+    if (userToken.role !== "admin")
+      return res.status(401).json(["Unauthorized"]);
     const clientes = await Cliente.findAll();
     if (clientes.length <= 0)
       return res.status(404).json(["No se han encontrado clientes"]);
@@ -17,7 +18,8 @@ export const getClientes = async (req, res) => {
 export const getClienteById = async (req, res, next) => {
   try {
     const userToken = req.user;
-    if (!userToken !== "admin") return res.status(401).json(["Unauthorized"]);
+    if (userToken.role !== "admin")
+      return res.status(401).json(["Unauthorized"]);
     const {chatId: id_chat} = req.params;
     const cliente = await Cliente.findByPk(id_chat);
     if (!cliente) return res.status(404).json(["No se encontro el cliente"]);
