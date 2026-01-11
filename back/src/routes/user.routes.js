@@ -13,7 +13,7 @@ const router = express.Router();
 
 router.post(
   "/register",
-  verifyToken,
+  revisarCookie,
   validateSchema(registerSchema),
   registerUser
 );
