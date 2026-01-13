@@ -86,16 +86,28 @@ export async function enviarMensajes(message, datos, chat, io) {
     }
 
     if (input === "confirmar") {
-      await Cliente.create(
-        {
-          nombre: datos[chatId].info.nombre,
-          apellido: datos[chatId].info.apellido,
-          dni: datos[chatId].info.dni,
-          categoria: datos[chatId].info.categoria,
+      const datosCliente = datos[chatId].info;
+
+      const clienteExistente = await Cliente.findOne({
+        where: {dni: datosCliente.dni},
+      });
+
+      if (clienteExistente) {
+        await clienteExistente.update({
+          nombre: datosCliente.nombre,
+          apellido: datosCliente.apellido,
+          categoria: datosCliente.categoria,
           id_chat: chatId,
-        },
-        {where: {id_chat: chatId}}
-      );
+        });
+      } else {
+        await Cliente.create({
+          nombre: datosCliente.nombre,
+          apellido: datosCliente.apellido,
+          dni: datosCliente.dni,
+          categoria: datosCliente.categoria,
+          id_chat: chatId,
+        });
+      }
 
       await responderYGuardar(
         chatId,

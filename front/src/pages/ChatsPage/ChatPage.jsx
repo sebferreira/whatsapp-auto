@@ -64,7 +64,7 @@ export function ChatPage() {
 
   useEffect(() => {
     const handleChatUpdated = (data) => {
-      console.log("Actualizando info del cliente:", data);
+      /*       console.log("Actualizando info del cliente:", data); */
 
       setChats((prevChats) => {
         return prevChats.map((chat) => {
@@ -81,7 +81,7 @@ export function ChatPage() {
     };
 
     const handleNewMessage = (mensaje) => {
-      console.log("Nuevo mensaje recibido:", mensaje);
+      /*  console.log("Nuevo mensaje recibido:", mensaje); */
       let fechaFinal;
       const fechaEntrante =
         mensaje.createdAt || mensaje.timestamp || Date.now();
@@ -155,7 +155,6 @@ export function ChatPage() {
       socket.off("chat_updated", handleChatUpdated);
     };
   }, []);
-  console.log(chats);
 
   return (
     <>

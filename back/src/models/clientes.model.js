@@ -21,6 +21,7 @@ const Cliente = sequelize.define(
     dni: {
       type: DataTypes.INTEGER,
       allowNull: false,
+      unique: true,
     },
     categoria: {
       type: DataTypes.STRING,

@@ -22,7 +22,7 @@ export const AuthProvider = ({children}) => {
 
   const signup = async (value) => {
     const data = await signUp(value);
-    console.log(data);
+
     if (data.length > 0) {
       return setRegisterErrors(data);
     }
@@ -91,14 +91,14 @@ export const AuthProvider = ({children}) => {
         setLoading(false);
         return;
       }
-      console.log(user, data);
+
       setUser(data);
       setIsAuthenticated(true);
       setLoading(false);
     }
     checkLogin();
   }, []);
-  console.log(user, loading);
+
   return (
     <AuthContext.Provider
       value={{

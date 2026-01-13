@@ -70,7 +70,7 @@ export default function ClientsPage() {
     const getClients = async () => {
       try {
         const result = await getClientes();
-        console.log(result);
+
         if (result) setData(result);
       } catch (error) {
         console.error("Error cargando clientes", error);
@@ -85,7 +85,7 @@ export default function ClientsPage() {
     if (filtro === "Todos") return true;
     return row.categoria?.toLowerCase() === filtro.toLowerCase();
   });
-  console.log(filasFiltradas);
+
 
   return (
     <Container maxWidth="lg" sx={{mt: 4, mb: 4}}>

@@ -11,7 +11,6 @@ import AccountCircleRoundedIcon from "@mui/icons-material/AccountCircleRounded";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 
 export default function ChatList({chat}) {
-  console.log(chat);
   return (
     <ListItem
       disablePadding

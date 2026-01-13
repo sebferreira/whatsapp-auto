@@ -14,7 +14,7 @@ import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 
 export default function ChatDrawer({chats, mensajes}) {
   const params = useParams();
-  console.log(chats);
+
   return (
     <>
       <Box
@@ -209,8 +209,7 @@ export default function ChatDrawer({chats, mensajes}) {
                       onClick={() => {
                         const pathAnterior =
                           sessionStorage.getItem("actualPath");
-                        console.log(item);
-                        console.log(pathAnterior);
+
                         if (pathAnterior != `/chats/${item.id_chat}`) {
                           sessionStorage.setItem("previousPath", pathAnterior);
                           sessionStorage.setItem(
