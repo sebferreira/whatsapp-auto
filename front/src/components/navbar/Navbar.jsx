@@ -12,6 +12,7 @@ import {useState} from "react";
 import NavDrawer from "./Drawers/NavDrawers";
 import MenuIcon from "@mui/icons-material/Menu";
 import ProfileMenu from "../Profile/ProfileMenu";
+import logo from "../../assets/whatsControl_icono_transparent.png";
 import AdminMenu from "../Menu/AdminMenu/AdminMenu";
 export default function Navbar() {
   const {user} = useAuth();
@@ -92,8 +93,15 @@ export default function Navbar() {
                     textDecoration: "none",
                     color: "#FFFF",
                     fontWeight: "bold",
+                    display: "flex",
+                    alignItems: "center",
                   }}>
-                  ChatBot
+                  <img
+                    src={logo}
+                    alt="Logo"
+                    style={{width: "2.5rem", marginRight: "5px"}}
+                  />
+                  WhatsControl
                 </Link>
               </Typography>
               <Box sx={{display: "flex"}}>

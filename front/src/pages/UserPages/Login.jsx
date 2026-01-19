@@ -1,4 +1,5 @@
 import {
+  Box,
   Button,
   Card,
   CardContent,
@@ -11,6 +12,7 @@ import {useForm} from "react-hook-form";
 import {useAuth} from "../../context/AuthContext";
 import {useEffect} from "react";
 import background from "../../assets/imagenRegistros.png";
+import logo from "../../assets/whatsControl_logo_transparent.png";
 
 export default function Signin() {
   const {
@@ -56,6 +58,23 @@ export default function Signin() {
           boxShadow: "0 8px 32px 0 rgba(0, 0, 0, 0.37)",
           color: "#fff",
         }}>
+        <Box
+          sx={{
+            display: {xs: "none", md: "flex"},
+            width: "50%",
+          }}>
+          <img
+            src={logo}
+            alt="logo"
+            style={{
+              width: "200px" /* 
+                  height: "100px", */,
+              marginBottom: "2rem",
+              marginLeft: "auto",
+              marginRight: "auto",
+              display: "block",
+            }}></img>
+        </Box>
         <CardContent
           sx={{
             width: {xs: "100%", md: "45%"},
@@ -71,6 +90,24 @@ export default function Signin() {
             justifyContent: "center",
             p: 4,
           }}>
+          <Box
+            sx={{
+              display: {xs: "flex", md: "none"},
+              width: "100px",
+              mx: "auto",
+            }}>
+            <img
+              src={logo}
+              alt="logo"
+              style={{
+                width: "100%" /* 
+                  height: "100px", */,
+                marginBottom: "2rem",
+                marginLeft: "auto",
+                marginRight: "auto",
+                display: "block",
+              }}></img>
+          </Box>
           <Typography
             variant="h5"
             component="h2"
