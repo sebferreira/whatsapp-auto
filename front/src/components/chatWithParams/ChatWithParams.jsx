@@ -18,6 +18,8 @@ export const ChatWithParams = memo(function ChatWithParams({chats, mensajes}) {
       mostrar = "none";
     }
   }
+  // Definimos el ancho del drawer en una variable para no repetir números
+  const drawerWidth = {xs: 0, md: "400px", lg: "500px", xl: "560px"};
   return (
     <Box
       sx={{
@@ -57,11 +59,11 @@ export const ChatWithParams = memo(function ChatWithParams({chats, mensajes}) {
           sx={{
             display: {xs: "none", md: "block"},
             zIndex: 0,
-            width: {md: "400px", lg: "500px", xl: "560px"},
+            width: drawerWidth,
             flexShrink: 0,
             "& .MuiDrawer-paper": {
               overflow: "hidden",
-              width: {md: "400px", lg: "500px", xl: "560px"},
+              width: drawerWidth,
               boxSizing: "border-box",
               backgroundColor: "#19181d",
               marginTop: "5rem",
@@ -91,7 +93,7 @@ export const ChatWithParams = memo(function ChatWithParams({chats, mensajes}) {
         }}>
         <ChatInput />
       </Box> */}
-      <Box
+      {/*  <Box
         sx={{
           width: {xs: "100%", md: "auto"},
           marginLeft: {xs: 0, md: "400px", lg: "500px", xl: "560px"},
@@ -106,7 +108,28 @@ export const ChatWithParams = memo(function ChatWithParams({chats, mensajes}) {
           paddingBottom: "max(10px, env(safe-area-inset-bottom))",
           justifyContent: "center",
         }}>
-        <Box sx={{width: "100%", maxWidth: "1000px"}}>
+        <Box sx={{width: "100%", maxWidth: "1000px"}}> */}
+      <Box
+        sx={{
+          flexShrink: 0, // No te aplastes
+          width: "100%",
+          backgroundColor: "#19181d", // Fondo del área del input
+          borderTop: "1px solid rgba(255, 255, 255, 0.1)",
+          paddingTop: "10px",
+          paddingBottom: "max(10px, env(safe-area-inset-bottom))", // Para iPhone/Android
+          display: mostrar, // Tu lógica de roles (flex/none)
+
+          // 🔥 AQUÍ ESTÁ LA MAGIA DEL CENTRADO (Imagen 1) 🔥
+          justifyContent: "center",
+          alignItems: "center",
+        }}>
+        {/* Contenedor que limita el ancho del input para que no sea eterno */}
+        <Box
+          sx={{
+            width: "100%",
+            maxWidth: "900px", // <--- ESTO HACE QUE SE VEA COMO LA IMAGEN 1
+            paddingX: {xs: "10px", md: "20px"}, // Margen a los costados
+          }}>
           {" "}
           <ChatInput />
         </Box>
