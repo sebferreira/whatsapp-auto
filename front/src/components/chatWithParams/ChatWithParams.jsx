@@ -65,9 +65,10 @@ export const ChatWithParams = memo(function ChatWithParams({chats, mensajes}) {
               width: drawerWidth,
               boxSizing: "border-box",
               backgroundColor: "#19181d",
+              boxShadow: "0 10px 30px rgba(0,0,0,0.4);",
+              borderRight: "1px solid rgba(255, 255, 255, 0.1)",
               marginTop: "5rem",
               height: "calc(100% - 5rem)",
-              borderRight: "1px solid rgba(255, 255, 255, 0.1)",
             },
           }}>
           <ChatDrawer chats={chats} mensajes={mensajes} />

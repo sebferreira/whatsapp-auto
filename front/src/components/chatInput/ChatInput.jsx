@@ -33,17 +33,10 @@ export function ChatInput() {
       <form
         onSubmit={onSubmit}
         style={{
-          /*  display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          gap: "0.5rem",
-          marginBottom: "0.5rem",
-          width: "100%",
-          margin: " 0 auto", */
           display: "flex",
           justifyContent: "space-between",
-          alignItems: "flex-end", // Alinea el botón abajo si el texto crece mucho
-          gap: "10px", // Espacio consistente entre input y botón
+          alignItems: "flex-end",
+          gap: "10px",
           width: "100%",
         }}>
         <TextField
