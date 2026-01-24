@@ -41,11 +41,20 @@ export const ChatWithParams = memo(function ChatWithParams({chats, mensajes}) {
         <NavbarChat chats={chats} />
       </Box>
       <Box
-        sx={{
+        /* sx={{
           display: "flex",
           flex: 1,
           overflow: "hidden",
           position: "relative",
+        }} */ component="main"
+        sx={{
+          flexGrow: 1,
+          // En móvil no hay margen izquierdo porque el drawer no está
+          marginLeft: {xs: 0, md: 0},
+          width: {xs: "100%", md: `calc(100% - 400px)`}, // Ajusta según el ancho de tu drawer
+          display: "flex",
+          flexDirection: "column",
+          overflow: "hidden",
         }}>
         <Drawer
           container={window.document.body}
@@ -53,12 +62,29 @@ export const ChatWithParams = memo(function ChatWithParams({chats, mensajes}) {
           anchor="left"
           open={true}
           sx={{
-            display: {xs: "none", md: "flex"},
+            // EN MÓVIL: OCULTO (Porque ya estamos viendo un chat específico)
+            // EN ESCRITORIO: VISIBLE (Como barra lateral)
+            display: {xs: "none", md: "block"},
+
+            // Aseguramos que el Drawer no tenga zIndex que tape el navbar
             zIndex: 0,
+
+            // Ancho del drawer container
+            width: {md: "400px", lg: "500px", xl: "560px"},
+            flexShrink: 0,
+
+            "& .MuiDrawer-paper": {
+              // Estilos del papel interno
+              width: {md: "400px", lg: "500px", xl: "560px"},
+              boxSizing: "border-box",
+              backgroundColor: "#19181d",
+              marginTop: "5rem", // Ajusta según tu Navbar real
+              height: "calc(100% - 5rem)", // Resta el navbar para que no se pase
+              borderRight: "1px solid rgba(255, 255, 255, 0.1)",
+            },
           }}
-          PaperProps={{
+          /*   PaperProps={{
             sx: {
-              /*  backgroundColor: "transparent", */
               color: "white",
               marginTop: "5rem",
               overflowY: "auto",
@@ -68,7 +94,8 @@ export const ChatWithParams = memo(function ChatWithParams({chats, mensajes}) {
               backgroundColor: "#19181d ",
               top: 0,
             },
-          }}>
+          }} */
+        >
           <ChatDrawer chats={chats} mensajes={mensajes} />
         </Drawer>
         <MessageSection mensajes={mensajes} />
