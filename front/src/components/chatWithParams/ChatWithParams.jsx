@@ -21,13 +21,8 @@ export const ChatWithParams = memo(function ChatWithParams({chats, mensajes}) {
   return (
     <Box
       sx={{
-        /* display: "flex",
+        display: "flex",
         flexDirection: "column",
-        height: "100%",
-        width: "100%",
-        overflow: "hidden", */ display: "flex",
-        flexDirection: "column",
-        // 1. LA CLAVE: Altura fija a la pantalla y sin scroll global
         height: "100dvh",
         width: "100%",
         overflow: "hidden",
@@ -37,7 +32,7 @@ export const ChatWithParams = memo(function ChatWithParams({chats, mensajes}) {
         sx={{
           display: "flex",
           justifyContent: "flex-start",
-          flexDirection: "column",
+          flexDirection: {xs: "column", md: "row"},
           flexShrink: 0,
           width: "100%",
           zIndex: 1100,
@@ -102,8 +97,8 @@ export const ChatWithParams = memo(function ChatWithParams({chats, mensajes}) {
           marginLeft: {xs: 0, md: "400px", lg: "500px", xl: "560px"},
           display: mostrar,
           flexShrink: 0,
-          marginTop: "auto",
-          backgroundColor: "#19181d",
+          marginTop: "auto" /* 
+          backgroundColor: "#19181d", */,
           borderTop: "1px solid rgba(255, 255, 255, 0.1)",
           boxShadow: "0px -4px 10px rgba(0, 0, 0, 0.5)",
           zIndex: 10,
