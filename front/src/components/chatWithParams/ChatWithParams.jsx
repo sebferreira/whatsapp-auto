@@ -105,7 +105,6 @@ export const ChatWithParams = memo(function ChatWithParams({chats, mensajes}) {
           paddingBottom: "max(15px, env(safe-area-inset-bottom))", // Aire abajo
 
           // CENTRADO
-          display: "flex",
           justifyContent: "center",
           alignItems: "center", // Centrado vertical por si acaso
         }}>
