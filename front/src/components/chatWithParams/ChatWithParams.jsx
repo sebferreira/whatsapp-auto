@@ -90,13 +90,13 @@ export const ChatWithParams = memo(function ChatWithParams({chats, mensajes}) {
           sx={{
             width: "100%",
             paddingX: {xs: "10px", md: "4rem"},
-          }}> */} 
-           <Box
+          }}> */}
+      <Box
         sx={{
           flexShrink: 0,
           backgroundColor: "#19181d",
           borderTop: "1px solid rgba(255, 255, 255, 0.1)",
-          
+
           // Ajustes de Espaciado Vertical
           paddingTop: "15px",
           paddingBottom: "max(15px, env(safe-area-inset-bottom))",
@@ -107,20 +107,19 @@ export const ChatWithParams = memo(function ChatWithParams({chats, mensajes}) {
 
           // 🔥 AQUÍ ESTÁ LA SOLUCIÓN DEL MARGEN 🔥
           // 1. Empujamos la caja a la derecha según el tamaño del Drawer en cada pantalla
-          marginLeft: { 
-            xs: 0,        // Móvil: Sin margen (ocupa todo)
-            md: "400px",  // PC Chica: Deja espacio al drawer
-            lg: "500px",  // PC Mediana
-            xl: "560px"   // PC Grande
+          marginLeft: {
+            xs: 0, // Móvil: Sin margen (ocupa todo)
+            md: "400px", // PC Chica: Deja espacio al drawer
+            lg: "500px", // PC Mediana
+            xl: "560px", // PC Grande
           },
 
           // 2. Ajustamos el ancho para que no se salga de la pantalla
-          width: { 
-            xs: "100%",   // Móvil: Todo el ancho
-            md: "auto"    // PC: "Lo que sobre" (Automático al tener margen)
+          width: {
+            xs: "100%", // Móvil: Todo el ancho
+            md: "auto", // PC: "Lo que sobre" (Automático al tener margen)
           },
-        }}
-      >
+        }}>
         {/* CAJA CONTENEDORA INTERNA */}
         <Box
           sx={{
@@ -129,12 +128,8 @@ export const ChatWithParams = memo(function ChatWithParams({chats, mensajes}) {
 
             // Márgenes laterales estéticos (para que el input no toque los bordes)
             // En PC le damos más aire (4rem), en celular menos (10px)
-            paddingX: { xs: "10px", md: "4rem" },
-          }}
-        >
-          <ChatInput />
-        </Box>
-      </Box>
+            paddingX: {xs: "10px", md: "4rem"},
+          }}>
           {" "}
           <ChatInput />
         </Box>
