@@ -77,58 +77,38 @@ export const ChatWithParams = memo(function ChatWithParams({chats, mensajes}) {
       </Box>
       {/*  <Box
         sx={{
-          width: {xs: "100vw", md: "auto"},
-          maxWidth: "100vw",
-          paddingTop: "0.5rem",
-          marginLeft: {xs: 0, md: "400px", lg: "500px", xl: "560px"},
-          display: mostrar,
-          minWidth: {sm: "30rem"},
-          justifyContent: "center",
-          borderTop: "1px solid rgba(255, 255, 255, 0.1)",
-          boxShadow: " 0px 4px 10px rgba(0, 0, 0, 0.7)",
           flexShrink: 0,
-          padding: "10px",
-          paddingLeft: "0",
-          paddingBottom: "max(10px, env(safe-area-inset-bottom))",
-        }}>
-        <ChatInput />
-      </Box> */}
-      {/*  <Box
-        sx={{
-          width: {xs: "100%", md: "auto"},
-          marginLeft: {xs: 0, md: "400px", lg: "500px", xl: "560px"},
-          display: mostrar,
-          flexShrink: 0,
-          marginTop: "auto",
-          borderTop: "1px solid rgba(255, 255, 255, 0.1)",
-          boxShadow: "0px -4px 10px rgba(0, 0, 0, 0.5)",
-          zIndex: 10,
-          padding: "10px",
-          paddingLeft: {xs: "10px", md: "0"},
-          paddingBottom: "max(10px, env(safe-area-inset-bottom))",
-          justifyContent: "center",
-        }}>
-        <Box sx={{width: "100%", maxWidth: "1000px"}}> */}
-      <Box
-        sx={{
-          flexShrink: 0, // No te aplastes
           width: "100%",
-          backgroundColor: "#19181d", // Fondo del área del input
           borderTop: "1px solid rgba(255, 255, 255, 0.1)",
           paddingTop: "10px",
-          paddingBottom: "max(10px, env(safe-area-inset-bottom))", // Para iPhone/Android
-          display: mostrar, // Tu lógica de roles (flex/none)
-
-          // 🔥 AQUÍ ESTÁ LA MAGIA DEL CENTRADO (Imagen 1) 🔥
+          paddingBottom: "max(10px, env(safe-area-inset-bottom))",
+          display: mostrar,
           justifyContent: "center",
           alignItems: "center",
         }}>
-        {/* Contenedor que limita el ancho del input para que no sea eterno */}
         <Box
           sx={{
             width: "100%",
-            maxWidth: "900px", // <--- ESTO HACE QUE SE VEA COMO LA IMAGEN 1
-            paddingX: {xs: "10px", md: "20px"}, // Margen a los costados
+            maxWidth: "900px", 
+            paddingX: {xs: "10px", md: "20px"},
+          }}> */}
+      <Box
+        sx={{
+          flexShrink: 0,
+          width: "100%",
+          backgroundColor: "#19181d",
+          borderTop: "1px solid rgba(255, 255, 255, 0.1)",
+          display: mostrar,
+          paddingTop: "10px",
+          paddingBottom: "max(10px, env(safe-area-inset-bottom))",
+          justifyContent: "center",
+        }}>
+        <Box
+          sx={{
+            width: "100%",
+            maxWidth: {xs: "100%", md: "900px"},
+
+            paddingX: {xs: "10px", md: "0"},
           }}>
           {" "}
           <ChatInput />
