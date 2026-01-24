@@ -88,8 +88,7 @@ export const ChatWithParams = memo(function ChatWithParams({chats, mensajes}) {
           boxShadow: " 0px 4px 10px rgba(0, 0, 0, 0.7)",
           flexShrink: 0,
           padding: "10px",
-          backgroundColor: "#19181d",
-          paddingBottom: "env(safe-area-inset-bottom, 10px)",
+          paddingBottom: "max(10px, env(safe-area-inset-bottom))",
         }}>
         <ChatInput />
       </Box>
