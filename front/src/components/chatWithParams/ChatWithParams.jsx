@@ -18,7 +18,6 @@ export const ChatWithParams = memo(function ChatWithParams({chats, mensajes}) {
       mostrar = "none";
     }
   }
-  // Definimos el ancho del drawer en una variable para no repetir números
   const drawerWidth = {xs: 0, md: "400px", lg: "500px", xl: "560px"};
   return (
     <Box
@@ -75,59 +74,25 @@ export const ChatWithParams = memo(function ChatWithParams({chats, mensajes}) {
         </Drawer>
         <MessageSection mensajes={mensajes} />
       </Box>
-      {/* <Box
-        sx={{
-          flexShrink: 0,
-          width: "100%",
-          backgroundColor: "#19181d",
-          borderTop: "1px solid rgba(255, 255, 255, 0.1)",
-          paddingTop: "15px",
-          paddingBottom: "max(15px, env(safe-area-inset-bottom))",
-          display: mostrar ? "flex" : "none",
-          justifyContent: "center",
-        }}>
-        <Box
-          sx={{
-            width: "100%",
-            paddingX: {xs: "10px", md: "4rem"},
-          }}> */}
       <Box
         sx={{
           flexShrink: 0,
-          backgroundColor: "#19181d",
           borderTop: "1px solid rgba(255, 255, 255, 0.1)",
 
-          // Ajustes de Espaciado Vertical
           paddingTop: "15px",
           paddingBottom: "max(15px, env(safe-area-inset-bottom))",
 
-          // Aseguramos que se muestre según tu lógica
           display: mostrar ? "flex" : "none",
           justifyContent: "center",
-
-          // 🔥 AQUÍ ESTÁ LA SOLUCIÓN DEL MARGEN 🔥
-          // 1. Empujamos la caja a la derecha según el tamaño del Drawer en cada pantalla
-          marginLeft: {
-            xs: 0, // Móvil: Sin margen (ocupa todo)
-            md: "400px", // PC Chica: Deja espacio al drawer
-            lg: "500px", // PC Mediana
-            xl: "560px", // PC Grande
-          },
-
-          // 2. Ajustamos el ancho para que no se salga de la pantalla
+          marginLeft: drawerWidth,
           width: {
-            xs: "100%", // Móvil: Todo el ancho
-            md: "auto", // PC: "Lo que sobre" (Automático al tener margen)
+            xs: "100%",
+            md: "auto",
           },
         }}>
-        {/* CAJA CONTENEDORA INTERNA */}
         <Box
           sx={{
-            // Ocupar todo el ancho disponible dentro del espacio azul (derecha)
             width: "100%",
-
-            // Márgenes laterales estéticos (para que el input no toque los bordes)
-            // En PC le damos más aire (4rem), en celular menos (10px)
             paddingX: {xs: "10px", md: "4rem"},
           }}>
           {" "}
