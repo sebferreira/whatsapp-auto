@@ -79,35 +79,53 @@ export const ChatWithParams = memo(function ChatWithParams({chats, mensajes}) {
         sx={{
           flexShrink: 0,
           width: "100%",
+          backgroundColor: "#19181d",
           borderTop: "1px solid rgba(255, 255, 255, 0.1)",
-          paddingTop: "10px",
-          paddingBottom: "max(10px, env(safe-area-inset-bottom))",
           display: mostrar,
+          paddingTop: "15px",
+          paddingBottom: "max(15px, env(safe-area-inset-bottom))",
           justifyContent: "center",
           alignItems: "center",
         }}>
         <Box
           sx={{
             width: "100%",
-            maxWidth: "900px", 
-            paddingX: {xs: "10px", md: "20px"},
+            maxWidth: {xs: "100%", md: "800px"},
+            paddingX: "20px",
           }}> */}
+      {/* SECCIÓN DEL INPUT (Fija abajo) */}
       <Box
         sx={{
           flexShrink: 0,
           width: "100%",
           backgroundColor: "#19181d",
           borderTop: "1px solid rgba(255, 255, 255, 0.1)",
-          display: mostrar,
 
+          // Ajustes de Espaciado Vertical
           paddingTop: "15px",
           paddingBottom: "max(15px, env(safe-area-inset-bottom))",
 
-          paddingLeft: {xs: "10px", md: "40px"},
-          paddingRight: {xs: "10px", md: "40px"},
+          // Aseguramos que se muestre según tu lógica
+          display: mostrar ? "flex" : "none",
           justifyContent: "center",
         }}>
-        <ChatInput />
+        {/* CAJA CONTENEDORA */}
+        <Box
+          sx={{
+            // 1. OCUPAR TODO EL ANCHO
+            width: "100%",
+
+            // 2. ELIMINAR EL LIMITE DE 800PX
+            // Quitamos maxWidth o lo ponemos en '100%'
+
+            // 3. MÁRGENES LATERALES RESPONSIVE
+            // Celular (xs): 10px de cada lado (aprovecha espacio)
+            // PC (md): 4rem (aprox 64px) de cada lado para que se vea elegante y centrado
+            paddingX: {xs: "10px", md: "4rem"},
+          }}>
+          {" "}
+          <ChatInput />
+        </Box>
       </Box>
     </Box>
   );
